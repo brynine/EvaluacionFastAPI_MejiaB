@@ -1,0 +1,40 @@
+<h2>Matrícula Vehicular</h2>
+
+<form (ngSubmit)="guardar()">
+  <input type="text" placeholder="Placa" [(ngModel)]="vehiculo.placa" name="placa" required />
+  <input
+    type="text"
+    placeholder="Propietario"
+    [(ngModel)]="vehiculo.propietario"
+    name="propietario"
+    required
+  />
+  <input type="text" placeholder="Marca" [(ngModel)]="vehiculo.marca" name="marca" required />
+  <input
+    type="number"
+    placeholder="Año"
+    [(ngModel)]="vehiculo.fabricacion"
+    name="fabricacion"
+    required
+  />
+  <input
+    type="number"
+    placeholder="Valor comercial"
+    [(ngModel)]="vehiculo.valor_comercial"
+    name="valor"
+    required
+  />
+  <button type="submit">Guardar</button>
+</form>
+
+<hr />
+
+<div
+  *ngFor="let v of vehiculos"
+  [style.border]="v.impuesto > 500 ? '2px solid orange' : '1px solid #ccc'"
+  style="margin: 8px; padding: 8px"
+>
+  <strong>{{ v.placa }}</strong> - {{ v.propietario }} <br />
+  Impuesto: {{ v.impuesto }}
+  <span *ngIf="v.impuesto > 500">⚠️</span>
+</div>
